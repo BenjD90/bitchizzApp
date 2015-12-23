@@ -1,13 +1,15 @@
 
 <h2>Chat</h2>
 
+
+<ul id="messages" ng-show="messages.length" class="messageArea" ng-style="{height : heightChat +'px'}" scroll-glue>
+  <li ng-repeat="message in messages">
+    {{message.author}} at {{message.timestamp | date:'dd/MM HH:mm:ss'}} : {{message.text}}
+  </li>
+</ul>
+
 <form>
   <input placeholder="Message..." ng-model="newMessage">
   <button type="submit" ng-click="addMessage(newMessage);newMessage = null;">send</button>
 </form>
-
-<ul id="messages" ng-show="messages.length">
-  <li ng-repeat="message in messages | reverse">{{message.author}} at {{message.timestamp | date:'dd/MM HH:mm:ss'}} : {{message.text}}</li>
-</ul>
-
 <p class="alert alert-danger" ng-show="err">{{err}}</p>

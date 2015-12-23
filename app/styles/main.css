@@ -81,3 +81,17 @@ body {
     border-bottom: 0;
   }
 }
+
+
+/* Added syles */
+.messageArea {
+  overflow-y: scroll;
+}
+
+.messageArea li {
+  list-style: none;
+}
+
+
+
+

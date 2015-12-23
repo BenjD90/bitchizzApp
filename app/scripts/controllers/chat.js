@@ -14,7 +14,13 @@ angular.module('bitchizzApp')
     $scope.messages = $firebaseArray(Ref.child('messages').limitToLast(100));
 
     // display any errors
-    $scope.messages.$loaded().catch(alert);
+    $scope.messages.$loaded().then(function() {
+      //scroll to bottom
+      var elmt = $('.messageArea');
+      $timeout(function() {
+        elmt.scrollTop(elmt.scrollHeight);
+      },100);
+    }).catch(alert);
 
     // provide a method for adding a message
     $scope.addMessage = function (newMessage) {
@@ -27,6 +33,17 @@ angular.module('bitchizzApp')
         }).catch(alert);
       }
     };
+
+    $scope.$watch($scope.getWindowDimensions, function (newValue, oldValue) {
+      var dims = $scope.getWindowDimensions();
+      $scope.heightChat = 0;
+      $scope.heightChat -= $('.header').outerHeight(true);
+      $scope.heightChat -= $('.footer').outerHeight(true);
+      $scope.heightChat -= $('div[ng-view]>h2').outerHeight(true);
+      $scope.heightChat -= $('div[ng-view]>form').outerHeight(true);
+      $scope.heightChat -= $('div[ng-view]>p').outerHeight(true);
+      $scope.heightChat += dims.h;
+    }, true);
 
     function alert(msg) {
       $scope.err = msg;
