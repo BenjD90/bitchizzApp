@@ -1,15 +1,27 @@
+<div class="chat">
+  <h2>Chat</h2>
 
-<h2>Chat</h2>
 
+  <ul id="messages" ng-show="messages.length" class="messageArea" ng-style="{height : heightChat +'px'}" scroll-glue>
+    <li ng-repeat="message in messages">
+      <br clear="all"/>
 
-<ul id="messages" ng-show="messages.length" class="messageArea" ng-style="{height : heightChat +'px'}" scroll-glue>
-  <li ng-repeat="message in messages">
-    {{message.author}} at {{message.timestamp | date:'dd/MM HH:mm:ss'}} : {{message.text}}
-  </li>
-</ul>
+      <div ng-show="messages[$index - 1].author != message.author">
+        <span class="author">{{message.author}}</span>
+      </div>
 
-<form>
-  <input placeholder="Message..." ng-model="newMessage">
-  <button type="submit" ng-click="addMessage(newMessage);newMessage = null;">send</button>
-</form>
+      <div class="message" ng-class="$index%2 == 0 ? 'grey' : ''">
+        <span ng-bind-html="message.text | nl2br"></span>
+
+        <div class="time" ng-show="messages[$index - 1].timestamp != message.timestamp">{{message.timestamp*1000 |
+          date:'dd/MM HH:mm:ss'}}
+        </div>
+      </div>
+      <hr style="margin:0;" ng-show="$index != 0 && messages[$index - 1].author != message.author"/>
+    </li>
+  </ul>
+  <div class="textareaParent">
+  <textarea placeholder="Message..." ng-keyup="onKeyUp($event)"></textarea>
+  </div>
+</div>
 <p class="alert alert-danger" ng-show="err">{{err}}</p>
