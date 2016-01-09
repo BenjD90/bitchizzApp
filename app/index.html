@@ -47,6 +47,9 @@
           <li ng-class="{ active: isActive('/account')}" ng-show-auth="">
             <a href="#/account">account</a>
           </li>
+          <li ng-class="{ active: isActive('/map')}" ng-show-auth="">
+            <a href="#/map">map</a>
+          </li>
 
         </ul>
       </div>
@@ -57,10 +60,9 @@
 <div class="container">
   <div ng-view=""></div>
 </div>
-
 <div class="footer">
   <div class="container">
-    <p><span class="glyphicon glyphicon-heart"></span> from Benj</p>
+    <span class="glyphicon glyphicon-heart"></span> from Benj
   </div>
 </div>
 
@@ -77,6 +79,9 @@
   ga('create', 'UA-XXXXX-X');
   ga('send', 'pageview');
 </script>
+<script src="http://maps.google.com/maps/api/js"></script>
+
+
 
 <!-- build:js(.) scripts/vendor.js -->
 <!-- bower:js -->
@@ -91,6 +96,7 @@
 <script src="bower_components/angular-route/angular-route.js"></script>
 <script src="bower_components/angular-touch/angular-touch.js"></script>
 <script src="bower_components/angular-scroll-glue/src/scrollglue.js"></script>
+<script src="bower_components/ngmap/build/scripts/ng-map.js"></script>
 <!-- endbower -->
 <!-- endbuild -->
 
@@ -110,6 +116,8 @@
 <script src="scripts/controllers/menu.js"></script>
 <script src="scripts/directives/resize.js"></script>
 <script src="scripts/filters/nl2br.js"></script>
+<script src="scripts/controllers/map.js"></script>
 <!-- endbuild -->
+
 </body>
 </html>
