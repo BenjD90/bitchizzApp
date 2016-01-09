@@ -1,29 +1,34 @@
-
 <div class="row-fluid">
-<div class="col-md-12">
-  <h3>Profile</h3>
+  <div class="col-md-12">
+    <h3>Profile
+    </h3>
 
-  <form role="form">
-    <p class="form-group">
-      <label>Account ID</label>
-      <br />{{user.uid}}
+    <form role="form">
+      <p class="form-group">
+        <label>Account ID</label>
+        <br/>{{user.uid}}
+      </p>
+
+      <p class="form-group">
+        <label>Name:</label>
+        <br/>{{profile.name}}
+      </p>
+
+      <p class="form-group">
+        <label>Photo:</label>
+        <img ng-src="{{profile.profileImageURL}}" width="50" height="50"/>
+      </p>
+
+      <p class="form-group">
+        <label>Email:</label>
+        <input type="email" name="email" ng-model="profile.email" class="form-control"/>
+      </p>
+    </form>
+
+    <p>
+      <button role="button" ng-click="logout()" class="btn btn-danger">Log Out</button>
     </p>
-
-    <p class="form-group">
-      <label>Name:</label>
-      <input type="text" name="name" ng-model="profile.name" class="form-control" />
-    </p>
-
-    <p class="form-group">
-      <label>Email:</label>
-      <input type="email" name="email" ng-model="profile.email" class="form-control" />
-    </p>
-  </form>
-
-  <p>
-    <button role="button" ng-click="logout()" class="btn btn-danger">Log Out</button>
-  </p>
-</div>
+  </div>
 
 </div>
 <p class="clearfix"></p>
