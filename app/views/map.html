@@ -1,0 +1,13 @@
+<div class="map" ng-style="{height : heightMap +'px'}">
+  <ng-map center="48.853,2.35" zoom="10" ng-style="{height : '100%'}">
+    <transit-layer></transit-layer>
+    <custom-marker ng-repeat="u in users" position="{{u.geolocation.coords.latitude}},{{u.geolocation.coords.longitude}}" title="{{u.name}}">
+      <div>
+        {{u.name}}<br />
+        <span ng-bind="u.geolocation.timestamp | date:'dd/MM HH:mm:ss'"></span>
+      </div>
+    </custom-marker>
+  </ng-map>
+</div>
+
+<!-- TODO prendre en compte le repli du menu pour le calcul de la taille de la carte -->
