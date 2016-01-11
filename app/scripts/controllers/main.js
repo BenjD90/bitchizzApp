@@ -15,15 +15,4 @@ angular.module('bitchizzApp')
       $scope.isConnected = false;
     }
 
-
-    $scope.oauthLogin = function (provider) {
-      $scope.err = null;
-      Auth.$authWithOAuthPopup(provider, {rememberMe: true}).then(function() {
-        $scope.isConnected = true;
-      }, showError);
-    };
-
-    function showError(err) {
-      $scope.err = err;
-    }
   });
