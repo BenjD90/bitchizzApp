@@ -8,7 +8,7 @@
  * Controller of the bitchizzApp
  */
 angular.module('bitchizzApp')
-  .controller('EventsCtrl', function ($scope, $log, user, Ref, $firebaseArray, $timeout) {
+  .controller('EventsCtrl', function ($scope, $log, user, Ref, $firebaseArray, $firebaseObject, $timeout) {
     var now = new Date();
     var eventTemplate = {
       name: '',

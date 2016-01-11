@@ -28,9 +28,9 @@ angular.module('bitchizzApp')
     $scope.onKeyUp = function (event) {
       var textarea = event.target;
       var content = textarea.value;
-      if (event.keyCode == 13 && event.shiftKey) {
+      if (event.keyCode === 13 && event.shiftKey) {
         event.stopPropagation();
-      } else if (event.keyCode == 13) {
+      } else if (event.keyCode === 13) {
         addMessage(content.substring(0, content.length - 1));
         textarea.value = null;
       }
@@ -54,5 +54,5 @@ angular.module('bitchizzApp')
 
 
       }
-    };
+    }
   });

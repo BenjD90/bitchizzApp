@@ -19,7 +19,10 @@ angular.module('bitchizzApp')
       var dims = $scope.getWindowDimensions();
       $scope.heightMap = 0;
       $scope.heightMap += dims.h;
+      // jshint ignore:start
       $scope.heightMap -= jQuery('.header').outerHeight(true);
       $scope.heightMap -= jQuery('.footer').outerHeight(true);
+      // jshint ignore:end
+
     }, true);
   });

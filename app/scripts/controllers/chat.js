@@ -13,10 +13,11 @@ angular.module('bitchizzApp')
     // synchronize a read-only, synchronized array of messages, limit to most recent 10
     $scope.messages = $firebaseArray(Ref.child('messages').limitToLast(100));
 
+    // jshint ignore:start
     // display any errors
     $scope.messages.$loaded().then(function () {
       //scroll to bottom
-      var elmt = $('.messageArea');
+      var elmt = jQuery('.messageArea');
       $timeout(function () {
         elmt.scrollTop(elmt.scrollHeight);
       }, 100);
@@ -34,6 +35,7 @@ angular.module('bitchizzApp')
       $scope.heightChat -= 10; //10px margin-bottom
       $scope.heightChat += dims.h;
     }, true);
+    // jshint ignore:end
 
     function alert(msg) {
       $scope.err = msg;

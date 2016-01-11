@@ -16,7 +16,9 @@ angular.module('bitchizzApp')
     function redirect(auth) {
       var uid = auth.uid;
       var facebookObj = auth.facebook;
+      // jshint ignore:start
       var name = facebookObj.cachedUserProfile.first_name + ' ' + facebookObj.cachedUserProfile.last_name[0];
+      // jshint ignore:end
 
       var profile = $firebaseObject(Ref.child('users/' + uid));
 

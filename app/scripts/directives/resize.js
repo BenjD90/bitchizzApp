@@ -8,7 +8,7 @@
  */
 angular.module('bitchizzApp')
   .directive('resize', function ($window) {
-    return function (scope, element) {
+    return function (scope) {
       var w = angular.element($window);
       scope.getWindowDimensions = function () {
         return {

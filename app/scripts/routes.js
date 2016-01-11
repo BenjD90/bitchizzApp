@@ -133,7 +133,7 @@ angular.module('bitchizzApp')
                 profile.geolocation.coords.speed = pos.coords.speed;
 
                 profile.$save();
-              }
+              };
               navigator.geolocation.watchPosition(savePosition);
             }
           });
