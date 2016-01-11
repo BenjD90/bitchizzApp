@@ -71,6 +71,17 @@ angular.module('bitchizzApp')
         controller: 'MapCtrl',
         controllerAs: 'map'
       })
+      .whenAuthenticated('/events', {
+        templateUrl: 'views/events.html',
+        controller: 'EventsCtrl',
+        controllerAs: 'events'
+      })
+      .whenAuthenticated('/event/:indexEvent', {
+        templateUrl: 'views/event.html',
+        controller: 'EventCtrl',
+        controllerAs: 'event'
+      })
+
       .when('/login', {
         templateUrl: 'views/login.html',
         controller: 'LoginCtrl'
@@ -106,13 +117,12 @@ angular.module('bitchizzApp')
           $location.path(loginRedirectPath);
         }
 
-        var profile = $firebaseObject(Ref.child('users/' + user.uid));
+        if (user) {
+          var profile = $firebaseObject(Ref.child('users/' + user.uid));
 
-        profile.$loaded().then(function () {
-
-          if (navigator.geolocation) {
-
-            var savePosition = function (pos) {
+          profile.$loaded().then(function () {
+            if (navigator.geolocation) {
+              var savePosition = function (pos) {
                 profile.geolocation = {};
                 profile.geolocation.timestamp = pos.timestamp;
 
@@ -123,11 +133,11 @@ angular.module('bitchizzApp')
                 profile.geolocation.coords.speed = pos.coords.speed;
 
                 profile.$save();
+              }
+              navigator.geolocation.watchPosition(savePosition);
             }
-            navigator.geolocation.watchPosition(savePosition);
-          }
-
-        })
+          });
+        }
 
       }
 
