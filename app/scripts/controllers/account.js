@@ -7,7 +7,7 @@
  * Provides rudimentary account management functions.
  */
 angular.module('bitchizzApp')
-  .controller('AccountCtrl', function ($scope, user, Auth, Ref, $firebaseObject, $timeout) {
+  .controller('AccountCtrl', function ($scope, user, Auth, Ref, $firebaseObject) {
     $scope.user = user;
     $scope.logout = function () {
       Auth.$unauth();

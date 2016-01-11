@@ -18,5 +18,6 @@ angular.module('bitchizzApp', [
   'firebase.ref',
   'firebase.auth',
   'luegg.directives',
-  'ngMap'
+  'ngMap',
+  'ngAutocomplete'
 ]);

@@ -1,10 +1,9 @@
-
 <h2>Login Page</h2>
 
-<fieldset>
-  <legend>Oauth</legend>
-  <p>
-    <button  class="btn btn-primary" ng-click="oauthLogin('facebook')">Facebook</button>
-  </p>
-</fieldset>
+<p class="alert alert-danger" ng-show="err">{{err}}</p>
 
+<button class="btn btn-primary" ng-click="oauthLogin('facebook')">Se connecter avec Facebook</button>
+
+<br/>
+<br/>
+<br/>

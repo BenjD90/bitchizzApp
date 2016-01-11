@@ -76,7 +76,7 @@ angular.module('bitchizzApp')
         controller: 'EventsCtrl',
         controllerAs: 'events'
       })
-      .whenAuthenticated('/event/:indexEvent', {
+      .whenAuthenticated('/event/:idEvent', {
         templateUrl: 'views/event.html',
         controller: 'EventCtrl',
         controllerAs: 'event'

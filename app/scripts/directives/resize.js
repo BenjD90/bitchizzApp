@@ -20,5 +20,5 @@ angular.module('bitchizzApp')
       w.bind('resize', function () {
         scope.$apply();
       });
-    }
-  })
+    };
+  });

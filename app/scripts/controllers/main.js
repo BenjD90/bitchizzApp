@@ -8,10 +8,22 @@
  * Controller of the bitchizzApp
  */
 angular.module('bitchizzApp')
-  .controller('MainCtrl', function ($scope) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+  .controller('MainCtrl', function ($scope, Auth) {
+    if (Auth.$getAuth()) {
+      $scope.isConnected = true;
+    } else {
+      $scope.isConnected = false;
+    }
+
+
+    $scope.oauthLogin = function (provider) {
+      $scope.err = null;
+      Auth.$authWithOAuthPopup(provider, {rememberMe: true}).then(function() {
+        $scope.isConnected = true;
+      }, showError);
+    };
+
+    function showError(err) {
+      $scope.err = err;
+    }
   });

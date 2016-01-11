@@ -44,16 +44,15 @@
           <li ng-class="{ active: isActive('/login')}" ng-hide-auth="">
             <a href="#/login">log in</a>
           </li>
-          <li ng-class="{ active: isActive('/account')}" ng-show-auth="">
-            <a href="#/account">account</a>
-          </li>
           <li ng-class="{ active: isActive('/map')}" ng-show-auth="">
             <a href="#/map">map</a>
           </li>
           <li ng-class="{ active: isActive('/events')}" ng-show-auth="">
             <a href="#/events">events</a>
           </li>
-
+          <li ng-class="{ active: isActive('/account')}" ng-show-auth="">
+            <a href="#/account">account</a>
+          </li>
         </ul>
       </div>
     </div>
@@ -82,7 +81,7 @@
   ga('create', 'UA-XXXXX-X');
   ga('send', 'pageview');
 </script>
-<script src="http://maps.google.com/maps/api/js"></script>
+<script src="http://maps.google.com/maps/api/js?libraries=places&sensor=false"></script>
 
 
 
@@ -103,6 +102,9 @@
 <!-- endbower -->
 <!-- endbuild -->
 
+<script src="scripts/vendros/ngAutocomplete.js"></script>
+
+
 <!-- build:js({.tmp,app}) scripts/scripts.js -->
 <script src="scripts/app.js"></script>
 <script src="scripts/controllers/main.js"></script>
@@ -122,6 +124,7 @@
 <script src="scripts/controllers/map.js"></script>
 <script src="scripts/controllers/events.js"></script>
 <script src="scripts/controllers/event.js"></script>
+<script src="scripts/filters/encodeuri.js"></script>
 <!-- endbuild -->
 
 </body>

@@ -23,14 +23,14 @@ angular.module('bitchizzApp')
     }).catch(alert);
 
 
-    $scope.$watch($scope.getWindowDimensions, function (newValue, oldValue) {
+    $scope.$watch($scope.getWindowDimensions, function () {
       var dims = $scope.getWindowDimensions();
       $scope.heightChat = 0;
-      $scope.heightChat -= $('.header').outerHeight(true);
-      $scope.heightChat -= $('.footer').outerHeight(true);
-      $scope.heightChat -= $('div[ng-view]>div>h2').outerHeight(true);
-      $scope.heightChat -= $('div[ng-view]>div>.textareaParent').outerHeight(true);
-      $scope.heightChat -= $('div[ng-view]>div>p').outerHeight(true);
+      $scope.heightChat -= jQuery('.header').outerHeight(true);
+      $scope.heightChat -= jQuery('.footer').outerHeight(true);
+      $scope.heightChat -= jQuery('div[ng-view]>div>h2').outerHeight(true);
+      $scope.heightChat -= jQuery('div[ng-view]>div>.textareaParent').outerHeight(true);
+      $scope.heightChat -= jQuery('div[ng-view]>div>p').outerHeight(true);
       $scope.heightChat -= 10; //10px margin-bottom
       $scope.heightChat += dims.h;
     }, true);
@@ -45,13 +45,13 @@ angular.module('bitchizzApp')
     $scope.onKeyUp = function (event) {
       var textarea = event.target;
       var content = textarea.value;
-      if (event.keyCode == 13 && event.shiftKey) {
+      if (event.keyCode === 13 && event.shiftKey) {
         event.stopPropagation();
-      } else if (event.keyCode == 13) {
-        addMessage(content.substring(0, content.length-1));
+      } else if (event.keyCode === 13) {
+        addMessage(content.substring(0, content.length - 1));
         textarea.value = null;
       }
-    }
+    };
 
     function addMessage(newMessage) {
       if (newMessage) {
@@ -62,5 +62,5 @@ angular.module('bitchizzApp')
           text: newMessage
         }).catch(alert);
       }
-    };
+    }
   });

@@ -8,7 +8,7 @@
  * Controller of the bitchizzApp
  */
 angular.module('bitchizzApp')
-  .controller('MenuCtrl', function ($scope, $location, $log) {
+  .controller('MenuCtrl', function ($scope, $location) {
     $scope.isActive = function (viewLocation) {
       return viewLocation === $location.path();
     };

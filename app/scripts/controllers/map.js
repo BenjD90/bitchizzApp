@@ -15,11 +15,11 @@ angular.module('bitchizzApp')
       console.log($scope.users);
     });
 
-    $scope.$watch($scope.getWindowDimensions, function (newValue, oldValue) {
+    $scope.$watch($scope.getWindowDimensions, function () {
       var dims = $scope.getWindowDimensions();
       $scope.heightMap = 0;
       $scope.heightMap += dims.h;
-      $scope.heightMap -= $('.header').outerHeight(true);
-      $scope.heightMap -= $('.footer').outerHeight(true);
+      $scope.heightMap -= jQuery('.header').outerHeight(true);
+      $scope.heightMap -= jQuery('.footer').outerHeight(true);
     }, true);
   });
