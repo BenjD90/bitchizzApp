@@ -24,7 +24,9 @@ angular.module('bitchizzApp')
     }).catch(alert);
 
 
-    $scope.$watch($scope.getWindowDimensions, function () {
+    $scope.$on('refreshSize', function () {
+      console.debug('refreshSize');
+
       var dims = $scope.getWindowDimensions();
       $scope.heightChat = 0;
       $scope.heightChat -= jQuery('.header').outerHeight(true);
@@ -34,7 +36,12 @@ angular.module('bitchizzApp')
       $scope.heightChat -= jQuery('div[ng-view]>div>p').outerHeight(true);
       $scope.heightChat -= 10; //10px margin-bottom
       $scope.heightChat += dims.h;
+
+      if(!$scope.$$phase) {
+        $scope.$apply();
+      }
     }, true);
+    $scope.$broadcast('refreshSize');
     // jshint ignore:end
 
     function alert(msg) {
