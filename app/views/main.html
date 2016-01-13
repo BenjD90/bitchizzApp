@@ -9,4 +9,12 @@
     <br/>
     <br/>
   </div>
+
+  <div ng-show="isConnected">
+    <h3>Prochains events</h3>
+    <div ng-repeat="(key, event) in eventsBitchizz | futureEvents">
+      <a href="#/event/{{key}}">{{event.date | date:'dd/MM/yyyy HH:mm'}} -
+        {{event.name}} ({{event.location}})</a>
+    </div>
+  </div>
 </div>
