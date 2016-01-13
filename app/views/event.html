@@ -1,35 +1,51 @@
 <div class="event">
   <form name="eventFrom" ng-submit="editEvent();">
     <div class="form-group">
-      <label for="name">Nom</label>
-      <input type="text" required class="form-control" id="name" placeholder="Nom" ng-model="eventB.name"/>
+      <label ng-if="edit" for="name">Nom : </label>
+      <input ng-if="edit" type="text" required class="form-control" id="name" placeholder="Nom"
+             ng-model="eventB.name"/>
+      <h1 ng-hide="edit">{{eventB.name}}</h1>
     </div>
     <div class="form-group">
-      <label for="date">Date et heure :</label>
-      <input type="datetime-local" class="form-control" id="date" placeholder="Date" ng-model="eventB.date" required/>
+      <label ng-if="edit" for="date">Date et heure :</label>
+      <input ng-if="edit" type="datetime-local" class="form-control" id="date" placeholder="Date"
+             ng-model="eventB.date" required/>
+
+      <h3 ng-hide="edit">{{eventB.date | date:'dd/MM/yyyy à HH:mm'}}</h3>
     </div>
     <div class="form-group">
       <label for="location">Lieu :</label>
-      <input ng-autocomplete  type="text" class="form-control" id="location" placeholder="Lieu" ng-model="eventB.location" required/>
-      <a ng-href="https://www.google.fr/maps/search/{{eventB.location | encodeURI}}" target="_blank">Ouvrir sur Google Maps</a>
+      <input ng-if="edit" ng-autocomplete type="text" class="form-control" id="location" placeholder="Lieu"
+             ng-model="eventB.location" required/>
+      <div ng-hide="edit">{{eventB.location}}</div>
+      <a ng-href="https://www.google.fr/maps/search/{{eventB.location | encodeURI}}" target="_blank">Ouvrir sur Google
+        Maps</a>
     </div>
     <div class="form-group">
       <label for="date">Description :</label>
-      <textarea class="form-control" rows="5" ng-model="eventB.description" maxlength="500"></textarea>
+      <textarea ng-show="edit" class="form-control" rows="5" ng-model="eventB.description" maxlength="500"></textarea>
+      <pre ng-hide="edit" ng-bind-html="eventB.description | linky:'_blank'"></pre>
     </div>
     <div class="form-group">
       <label for="flagOnlyBitchizz">Only Bitchizz ?
         <input type="checkbox" id="flagOnlyBitchizz" ng-model="eventB.isOnlyBitchizz"/>
       </label>
     </div>
-    <button type="submit" class="btn btn-default">Modifier</button>
+    <button ng-if="edit" type="submit" class="btn btn-primary">Modifier</button>
+    <span class="alert alert-success glyphicon glyphicon-ok" ng-show="success"></span>
+
+    <span ng-click="edit = !edit" class="btn  btn-default">
+      <span ng-if="edit">Voir</span>
+      <span ng-if="!edit">Edit</span>
+    </span>
   </form>
 
 
   <h2>Commentaires :</h2>
 
   <div class="chat">
-    <ul id="messages" ng-show="eventB.comments.length" class="messageArea" ng-style="{height : heightChat +'px'}" scroll-glue>
+    <ul id="messages" ng-show="eventB.comments.length" class="messageArea" ng-style="{height : heightChat +'px'}"
+        scroll-glue>
       <li ng-repeat="message in eventB.comments">
         <br clear="all"/>
 

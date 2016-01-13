@@ -8,20 +8,26 @@
  * Controller of the bitchizzApp
  */
 angular.module('bitchizzApp')
-  .controller('EventCtrl', function ($scope, $log, user, Ref, $firebaseArray, $firebaseObject, $routeParams) {
+  .controller('EventCtrl', function ($scope, $log, user, Ref, $firebaseArray, $firebaseObject, $routeParams, $timeout) {
     var profile = $firebaseObject(Ref.child('users/' + user.uid));
 
+    $scope.edit = false;
     $scope.eventB = undefined;
     $firebaseObject(Ref.child('events/' + $routeParams.idEvent)).$loaded().then(function (data) {
       data.date = new Date(data.date);
       $scope.eventB = data;
     });
+    $scope.success = false;
 
 
     $scope.editEvent = function () {
       $scope.eventB.date = new Date($scope.eventB.date).getTime();
       $scope.eventB.$save().then(function () {
         $scope.eventB.date = new Date($scope.eventB.date);
+        $scope.success = true;
+        $timeout(function () {
+          $scope.success = false;
+        }, 5000);
       });
     };
 
