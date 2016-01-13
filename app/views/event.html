@@ -27,9 +27,13 @@
       <pre ng-hide="edit" ng-bind-html="eventB.description | linky:'_blank'"></pre>
     </div>
     <div class="form-group">
-      <label for="flagOnlyBitchizz">Only Bitchizz ?
+      <label ng-if="edit" for="flagOnlyBitchizz">Only Bitchizz ?
         <input type="checkbox" id="flagOnlyBitchizz" ng-model="eventB.isOnlyBitchizz"/>
       </label>
+      <div ng-if="!edit">
+        <span ng-show="eventB.isOnlyBitchizz">Seulement les bitchizz</span>
+        <span ng-hide="eventB.isOnlyBitchizz">Bitchizz & Cie</span>
+      </div>
     </div>
     <button ng-if="edit" type="submit" class="btn btn-primary">Modifier</button>
     <span class="alert alert-success glyphicon glyphicon-ok" ng-show="success"></span>

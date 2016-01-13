@@ -13,14 +13,11 @@ body {
 .header,
 .marketing,
 .footer {
-  padding-left: 15px;
-  padding-right: 15px;
 }
 
 /* Custom page header */
 .header {
   border-bottom: 1px solid #e5e5e5;
-  margin-bottom: 3px;
 }
 
 /* Make the masthead heading the same height as the navigation */
@@ -68,6 +65,10 @@ body {
     max-width: 730px;
   }
 
+  div.chat, div.events, div.event, div.account, div.home {
+    max-width: 730px;
+  }
+
   /* Remove the padding we set earlier */
   .header,
   .marketing,
@@ -88,6 +89,11 @@ body {
 }
 
 /* Added syles */
+div.chat, div.events, div.event, div.account, div.home {
+  margin-right: auto;
+  margin-left: auto;
+}
+
 .chat .messageArea {
   overflow-y: scroll;
   padding-left: 0;
@@ -131,12 +137,12 @@ body {
 Override bootstrap BEGIN
 */
 .navbar {
-  margin-bottom: 5px;
+  margin-bottom: 0px;
 }
+
 /*
 Override bootstrap END
 */
-
 
 /**
 map part BEGIN
