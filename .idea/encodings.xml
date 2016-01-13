@@ -1,11 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/Gruntfile.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/README.md" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/scripts/app.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/scripts/controllers/account.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/scripts/controllers/chat.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/scripts/controllers/event.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/scripts/controllers/events.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/scripts/controllers/login.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/scripts/controllers/main.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/scripts/controllers/map.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/scripts/controllers/menu.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/scripts/directives/resize.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/scripts/filters/encodeuri.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/scripts/filters/nl2br.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/scripts/routes.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/scripts/vendros/ngAutocomplete.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/styles/main.css" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/views/account.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/views/chat.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/views/event.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/views/events.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/views/login.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/views/main.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/views/map.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/bower.json" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/test/spec/controllers/main.js" charset="UTF-8" />
   </component>
 </project>
