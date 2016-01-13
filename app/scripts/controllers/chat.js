@@ -7,7 +7,7 @@
  * A demo of using AngularFire to manage a synchronized list.
  */
 angular.module('bitchizzApp')
-  .controller('ChatCtrl', function ($scope, $log, user, Ref, $firebaseArray, $firebaseObject, $timeout) {
+  .controller('ChatCtrl', function ($rootScope, $scope, $log, user, Ref, $firebaseArray, $firebaseObject, $timeout) {
     var profile = $firebaseObject(Ref.child('users/' + user.uid));
 
     // synchronize a read-only, synchronized array of messages, limit to most recent 10
@@ -21,7 +21,11 @@ angular.module('bitchizzApp')
       $timeout(function () {
         elmt.scrollTop(elmt.scrollHeight);
       }, 100);
+
+      //reset new message val
+      $rootScope.newMessage = false;
     }).catch(alert);
+
 
 
     $scope.$on('refreshSize', function () {
@@ -37,7 +41,7 @@ angular.module('bitchizzApp')
       $scope.heightChat -= 10; //10px margin-bottom
       $scope.heightChat += dims.h;
 
-      if(!$scope.$$phase) {
+      if (!$scope.$$phase) {
         $scope.$apply();
       }
     }, true);
@@ -67,9 +71,14 @@ angular.module('bitchizzApp')
         // push a message to the end of the array
         $scope.messages.$add({
           author: profile.name,
+          uid: user.uid,
           timestamp: parseInt(new Date().getTime() / 1000),
           text: newMessage
         }).catch(alert);
       }
+    }
+
+    $scope.clearNewMessage = function() {
+      $rootScope.newMessage = false;
     }
   });

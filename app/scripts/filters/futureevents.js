@@ -11,7 +11,6 @@
 angular.module('bitchizzApp')
   .filter('futureEvents', function () {
     return function (input) {
-      console.log(input);
       var nowTimeStamp = new Date().getTime();
       var ret = {};
 

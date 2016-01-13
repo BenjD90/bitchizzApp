@@ -11,9 +11,7 @@ angular.module('bitchizzApp')
   .controller('MapCtrl', function ($scope, Ref, $firebaseObject, NgMap) {
     $scope.users = $firebaseObject(Ref.child('users'));
 
-    $scope.users.$loaded().then(function () {
-      console.log($scope.users);
-    });
+
 
     $scope.$on('refreshSize', function () {
       var dims = $scope.getWindowDimensions();

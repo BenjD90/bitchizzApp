@@ -42,7 +42,12 @@
         <ul class="nav navbar-nav">
           <li ng-class="{ active: isActive('/')}"><a href="#/">Home</a></li>
           <!-- //angularfire -->
-          <li ng-class="{ active: isActive('/chat')}" ng-show-auth=""><a ng-href="#/chat">chat</a></li>
+          <li ng-class="{ active: isActive('/chat')}" ng-show-auth="">
+            <a ng-href="#/chat">
+              chat
+              <span ng-show="newMessage" class="glyphicon glyphicon-flag text-danger"></span>
+            </a>
+          </li>
           <li ng-class="{ active: isActive('/login')}" ng-hide-auth="">
             <a href="#/login">log in</a>
           </li>
