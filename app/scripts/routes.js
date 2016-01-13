@@ -134,7 +134,11 @@ angular.module('bitchizzApp')
 
                 profile.$save();
               };
-              navigator.geolocation.watchPosition(savePosition);
+
+              navigator.geolocation.getCurrentPosition(savePosition);
+              setInterval(function() {
+                navigator.geolocation.getCurrentPosition(savePosition);
+              }, 10000);
             }
           });
         }
