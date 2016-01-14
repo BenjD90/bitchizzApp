@@ -65,7 +65,7 @@ body {
     max-width: 730px;
   }
 
-  div.chat, div.events, div.event, div.account, div.home {
+  div.chat, div.events, div.event, div.account, div.home, div.login {
     max-width: 730px;
   }
 
@@ -89,7 +89,7 @@ body {
 }
 
 /* Added syles */
-div.chat, div.events, div.event, div.account, div.home {
+div.chat, div.events, div.event, div.account, div.home, div.login {
   margin-right: auto;
   margin-left: auto;
 }
