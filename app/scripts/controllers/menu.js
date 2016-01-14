@@ -8,7 +8,7 @@
  * Controller of the bitchizzApp
  */
 angular.module('bitchizzApp')
-  .controller('MenuCtrl', function ($scope, $location, $timeout, Ref, $firebaseArray, $firebaseObject, Auth) {
+  .controller('MenuCtrl', function ($scope, $rootScope, $location, $timeout, Ref, $firebaseArray, $firebaseObject, Auth) {
     $scope.isActive = function (viewLocation) {
       return viewLocation === $location.path();
     };
