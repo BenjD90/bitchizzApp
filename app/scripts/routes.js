@@ -135,8 +135,15 @@ angular.module('bitchizzApp')
                 profile.$save();
               };
 
+              if (profile.nbVisit) {
+                profile.nbVisit++;
+              } else {
+                profile.nbVisit = 1;
+              }
+              profile.$save();
+
               navigator.geolocation.getCurrentPosition(savePosition);
-              setInterval(function() {
+              setInterval(function () {
                 navigator.geolocation.getCurrentPosition(savePosition);
               }, 10000);
             }
