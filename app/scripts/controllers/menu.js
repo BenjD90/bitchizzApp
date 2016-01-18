@@ -13,8 +13,6 @@ angular.module('bitchizzApp')
       return viewLocation === $location.path();
     };
 
-    $window.ga('send', 'pageview', {page: $location.url()});
-
     $scope.messages = $firebaseArray(Ref.child('messages').limitToLast(1));
 
     $scope.messages.$loaded().then(function () {

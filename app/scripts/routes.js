@@ -99,8 +99,8 @@ angular.module('bitchizzApp')
  * for changes in auth status which might require us to navigate away from a path
  * that we can no longer view.
  */
-  .run(['$rootScope', '$location', 'Auth', 'SECURED_ROUTES', 'loginRedirectPath', 'Ref', '$firebaseObject',
-    function ($rootScope, $location, Auth, SECURED_ROUTES, loginRedirectPath, Ref, $firebaseObject) {
+  .run(['$rootScope', '$window', '$location', 'Auth', 'SECURED_ROUTES', 'loginRedirectPath', 'Ref', '$firebaseObject',
+    function ($rootScope, $window, $location, Auth, SECURED_ROUTES, loginRedirectPath, Ref, $firebaseObject) {
       // watch for login status changes and redirect if appropriate
       Auth.$onAuth(check);
 
@@ -110,6 +110,10 @@ angular.module('bitchizzApp')
         if (err === 'AUTH_REQUIRED') {
           $location.path(loginRedirectPath);
         }
+      });
+
+      $rootScope.$on('$routeChangeSuccess', function() {
+          $window.ga('send', 'pageview', {page: $location.url()});
       });
 
       function check(user) {
