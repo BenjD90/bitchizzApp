@@ -1,9 +1,10 @@
 <div class="event">
-  <form name="eventFrom" ng-submit="editEvent();">
+  <form name="eventFrom" ng-submit="editEvent();" style="margin-bottom:10px;">
     <div class="form-group">
       <label ng-if="edit" for="name">Nom : </label>
       <input ng-if="edit" type="text" required class="form-control" id="name" placeholder="Nom"
              ng-model="eventB.name"/>
+
       <h1 ng-hide="edit">{{eventB.name}}</h1>
     </div>
     <div class="form-group">
@@ -17,6 +18,7 @@
       <label for="location">Lieu :</label>
       <input ng-if="edit" ng-autocomplete type="text" class="form-control" id="location" placeholder="Lieu"
              ng-model="eventB.location" required/>
+
       <div ng-hide="edit">{{eventB.location}}</div>
       <a ng-href="https://www.google.fr/maps/search/{{eventB.location | encodeURI}}" target="_blank">Ouvrir sur Google
         Maps</a>
@@ -30,11 +32,27 @@
       <label ng-if="edit" for="flagOnlyBitchizz">Only Bitchizz ?
         <input type="checkbox" id="flagOnlyBitchizz" ng-model="eventB.isOnlyBitchizz"/>
       </label>
+
       <div ng-if="!edit">
         <span ng-show="eventB.isOnlyBitchizz">Seulement les bitchizz</span>
         <span ng-hide="eventB.isOnlyBitchizz">Bitchizz & Cie</span>
       </div>
     </div>
+    <div class="form-group">
+      Participants :
+      <div ng-repeat="(key, answerKind) in eventB.people" class="btn-group" style="margin-right:5px;" uib-dropdown>
+        <button id="single-button" type="button" class="btn btn-primary" uib-dropdown-toggle>
+          <b>{{answerKind.length}}</b> {{key}}
+          <span class="caret"></span>
+        </button>
+        <ul uib-dropdown-menu role="menu">
+          <li role="menuitem" ng-repeat="answer in answerKind"><a>{{answer.name}} ({{answer.dateAnswer |
+            date:'dd/MM/yyyy à HH:mm'}})</a></li>
+        </ul>
+      </div>
+    </div>
+
+
     <button ng-if="edit" type="submit" class="btn btn-primary">Modifier</button>
     <span class="alert alert-success glyphicon glyphicon-ok" ng-show="success"></span>
 
@@ -42,6 +60,19 @@
       <span ng-if="edit">Voir</span>
       <span ng-if="!edit">Edit</span>
     </span>
+
+    <div uib-dropdown style="display: inline-block;">
+      <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+              aria-expanded="false">
+        Répondre <span class="caret"></span>
+      </button>
+      <ul uib-dropdown-menu role="menu">
+        <li><a ng-click="participate('going')">Je serais là !</a></li>
+        <li><a ng-click="participate('mayBe')">Ça dépendra de ma soeur.</a></li>
+        <li role="separator" class="divider"></li>
+        <li><a ng-click="participate('notGoing')">Je ne peux pas venir.</a></li>
+      </ul>
+    </div>
   </form>
 
 

@@ -13,6 +13,7 @@ angular.module('bitchizzApp')
 
     $scope.edit = false;
     $scope.eventB = undefined;
+
     $firebaseObject(Ref.child('events/' + $routeParams.idEvent)).$loaded().then(function (data) {
       data.date = new Date(data.date);
       $scope.eventB = data;
@@ -24,6 +25,41 @@ angular.module('bitchizzApp')
       $scope.eventB.date = new Date($scope.eventB.date).getTime();
       $scope.eventB.$save().then(function () {
         $scope.eventB.date = new Date($scope.eventB.date);
+        $scope.success = true;
+        $timeout(function () {
+          $scope.success = false;
+        }, 5000);
+      });
+    };
+
+
+    $scope.participate = function (answer) {
+      if (!$scope.eventB.people) {
+        $scope.eventB.people = {};
+      }
+      if (!$scope.eventB.people[answer]) {
+        $scope.eventB.people[answer] = [];
+      }
+
+        for (var answerKind in $scope.eventB.people) {
+          $scope.eventB.people[answerKind].forEach(function (answer, index) {
+            if (answer.uid && answer.uid === user.uid) {
+              $scope.eventB.people[answerKind].splice(index,1);
+            }
+          })
+        }
+
+
+      $scope.eventB.people[answer].push({
+        name: profile.name,
+        uid: user.uid,
+        dateAnswer: Firebase.ServerValue.TIMESTAMP
+      });
+
+      $scope.eventB.date = new Date($scope.eventB.date).getTime();
+      $scope.eventB.$save().then(function () {
+        $scope.eventB.date = new Date($scope.eventB.date);
+
         $scope.success = true;
         $timeout(function () {
           $scope.success = false;

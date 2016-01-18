@@ -3,11 +3,10 @@
 
   <h2>Evenements : </h2>
 
-  <div ng-repeat="(key, event) in eventsBitchizz">
-    <a href="#/event/{{key}}">{{event.date | date:'dd/MM/yyyy HH:mm'}} -
+  <div ng-repeat="event in eventsBitchizz | fireObjectToArray | orderBy:'-date'">
+    <a href="#/event/{{event.idFirebase}}">{{event.date | date:'dd/MM/yyyy HH:mm'}} -
       {{event.name}} ({{event.location}})</a>
   </div>
-
   <h2>Créer un event</h2>
 
   <p class="alert alert-danger" ng-show="err">{{err}}</p>

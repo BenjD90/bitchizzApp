@@ -14,6 +14,7 @@
     <file url="file://$PROJECT_DIR$/app/scripts/controllers/menu.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/scripts/directives/resize.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/scripts/filters/encodeuri.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/scripts/filters/fireobjecttoarray.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/scripts/filters/futureevents.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/scripts/filters/nl2br.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/scripts/routes.js" charset="UTF-8" />

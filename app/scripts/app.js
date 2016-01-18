@@ -20,5 +20,6 @@ angular.module('bitchizzApp', [
   'luegg.directives',
   'ngMap',
   'ngAutocomplete',
-  'ngSanitize'
+  'ngSanitize',
+  'ui.bootstrap'
 ]);
