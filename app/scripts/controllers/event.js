@@ -46,7 +46,7 @@ angular.module('bitchizzApp')
             if (answer.uid && answer.uid === user.uid) {
               $scope.eventB.people[answerKind].splice(index,1);
             }
-          })
+          });
         }
 
 

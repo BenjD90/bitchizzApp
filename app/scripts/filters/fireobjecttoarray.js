@@ -15,7 +15,7 @@ angular.module('bitchizzApp')
       var ret = [];
 
       for(var key in input) {
-        if(typeof input[key] === 'object' && key[0] != '$') {
+        if(typeof input[key] === 'object' && key[0] !== '$') {
           ret.push(input[key]);
           input[key].idFirebase = key;
         }
